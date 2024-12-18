@@ -29,6 +29,6 @@ public class ViewPagerAdapter extends FragmentStateAdapter {
 
     @Override
     public int getItemCount() {
-        return 2; // Aggiorna con il numero totale di Tab
+        return 2;
     }
 }
