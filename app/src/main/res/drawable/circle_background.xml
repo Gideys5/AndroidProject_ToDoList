@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<circle_background.xml xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    tools:ignore="MissingClass">
+    <shape xmlns:android="http://schemas.android.com/apk/res/android">
+        <solid android:color="#00B4D8" />
+        <corners android:radius="28dp" />
+    </shape>
+</circle_background.xml>

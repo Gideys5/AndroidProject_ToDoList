@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#03045E"
+    android:padding="20dp">
+
+    <TextView
+        android:id="@+id/register_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Registrazione"
+        android:textColor="#CAF0F8"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp" />
+
+    <EditText
+        android:id="@+id/register_username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Username"
+        android:backgroundTint="#00B4D8"
+        android:textColorHint="#CAF0F8"
+        android:textColor="#CAF0F8"
+        android:layout_below="@id/register_title"
+        android:layout_marginTop="40dp" />
+
+    <EditText
+        android:id="@+id/register_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:backgroundTint="#00B4D8"
+        android:textColorHint="#CAF0F8"
+        android:textColor="#CAF0F8"
+        android:layout_below="@id/register_username"
+        android:layout_marginTop="20dp" />
+
+    <EditText
+        android:id="@+id/register_confirm_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Conferma Password"
+        android:inputType="textPassword"
+        android:backgroundTint="#00B4D8"
+        android:textColorHint="#CAF0F8"
+        android:textColor="#CAF0F8"
+        android:layout_below="@id/register_password"
+        android:layout_marginTop="20dp" />
+
+    <Button
+        android:id="@+id/register_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Registrati"
+        android:backgroundTint="#00B4D8"
+        android:textColor="#03045E"
+        android:layout_below="@id/register_confirm_password"
+        android:layout_marginTop="30dp" />
+
+    <Button
+        android:id="@+id/go_to_login_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hai già un account? Login"
+        android:textColor="#CAF0F8"
+        android:background="@android:color/transparent"
+        android:layout_below="@id/register_button"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp" />
+</RelativeLayout>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <color name="blue_900">#03045E</color>
+    <color name="blue_700">#0077B6</color>
+    <color name="blue_500">#00B4D8</color>
+    <color name="light_blue_300">#90E0EF</color>
+    <color name="light_blue_100">#CAF0F8</color>
+    <color name="red_500">#FF0000</color>
+</PreferenceScreen>
