@@ -20,6 +20,14 @@
         android:focusable="false"
         android:clickable="true"
         android:inputType="none" />
+    <Spinner
+        android:id="@+id/task_priority"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/priority_levels"
+        android:spinnerMode="dropdown"
+        android:layout_marginTop="8dp"/>
+
 
     <Button
         android:id="@+id/add_task_button"

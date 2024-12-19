@@ -1,26 +1,34 @@
 package com.example.todolistapp.FilesTasks;
+
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.todolistapp.R;
+
 import java.util.List;
 
 public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder> {
 
-    private List<Task> tasks;
-    private OnTaskDeleteListener onTaskClickListener;
+    private final List<Task> tasks;
+    private final Context context;
+    private final OnTaskDeleteListener onTaskDeleteListener;
 
     public interface OnTaskDeleteListener {
         void onTaskDelete(int position);
     }
 
-    public TaskAdapter(List<Task> tasks, OnTaskDeleteListener onTaskClickListener) {
+    public TaskAdapter(List<Task> tasks, Context context, OnTaskDeleteListener onTaskDeleteListener) {
         this.tasks = tasks;
-        this.onTaskClickListener = onTaskClickListener;
+        this.context = context;
+        this.onTaskDeleteListener = onTaskDeleteListener;
     }
 
     @NonNull
@@ -34,9 +42,21 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
     public void onBindViewHolder(@NonNull TaskViewHolder holder, int position) {
         Task task = tasks.get(position);
         holder.taskTitle.setText(task.getTitle());
-        holder.taskDeadLine.setText(task.getDeadline());
+        holder.taskDeadline.setText(task.getDeadline());
 
-        holder.deleteButton.setOnClickListener(v -> onTaskClickListener.onTaskDelete(position));
+        switch (task.getPriority()) {
+            case "Alta":
+                holder.itemView.setBackgroundColor(ContextCompat.getColor(context, R.color.red));
+                break;
+            case "Media":
+                holder.itemView.setBackgroundColor(ContextCompat.getColor(context, R.color.yellow));
+                break;
+            case "Bassa":
+                holder.itemView.setBackgroundColor(ContextCompat.getColor(context, R.color.green));
+                break;
+        }
+
+        holder.deleteButton.setOnClickListener(v -> onTaskDeleteListener.onTaskDelete(position));
     }
 
     @Override
@@ -46,13 +66,13 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
 
     public static class TaskViewHolder extends RecyclerView.ViewHolder {
         TextView taskTitle;
-        TextView taskDeadLine;
+        TextView taskDeadline;
         Button deleteButton;
 
         public TaskViewHolder(@NonNull View itemView) {
             super(itemView);
             taskTitle = itemView.findViewById(R.id.task_title);
-            taskDeadLine = itemView.findViewById(R.id.task_deadline);
+            taskDeadline = itemView.findViewById(R.id.task_deadline);
             deleteButton = itemView.findViewById(R.id.delete_button);
         }
     }

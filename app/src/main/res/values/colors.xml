@@ -6,4 +6,8 @@
     <color name="light_blue_100">#90E0EF</color>
     <color name="blue_900">#00B4D8</color>
     <color name="red_500">#F44336</color>
+    <color name="red">#FFCDD2</color>
+    <color name="yellow">#FFF9C4</color>
+    <color name="green">#C8E6C9</color>
+
 </resources>

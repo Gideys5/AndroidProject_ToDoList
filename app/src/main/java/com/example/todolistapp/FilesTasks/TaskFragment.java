@@ -6,8 +6,11 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -27,6 +30,8 @@ public class TaskFragment extends Fragment {
     private TaskAdapter taskAdapter;
     private TaskRepository taskRepository;
     private EditText taskInput, deadlineInput;
+    private Spinner prioritySpinner;
+    private String selectedPriority = "Media";
 
     @Nullable
     @Override
@@ -35,12 +40,14 @@ public class TaskFragment extends Fragment {
 
         taskInput = view.findViewById(R.id.task_title);
         deadlineInput = view.findViewById(R.id.task_deadline);
+        prioritySpinner = view.findViewById(R.id.task_priority);
         Button addTaskButton = view.findViewById(R.id.add_task_button);
         taskRecyclerView = view.findViewById(R.id.task_recycler_view);
 
         taskRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         taskRepository = new TaskRepository(requireContext());
 
+        setupSpinner();
         loadTasks();
 
         deadlineInput.setOnClickListener(v -> openDatePicker());
@@ -50,7 +57,7 @@ public class TaskFragment extends Fragment {
             String deadlineText = deadlineInput.getText().toString().trim();
 
             if (!taskText.isEmpty() && !deadlineText.isEmpty()) {
-                Task newTask = new Task(taskText, deadlineText);
+                Task newTask = new Task(taskText, deadlineText, selectedPriority);
                 taskRepository.insertTask(newTask);
 
                 loadTasks();
@@ -65,16 +72,34 @@ public class TaskFragment extends Fragment {
         return view;
     }
 
+    private void setupSpinner() {
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(requireContext(),
+                R.array.priority_levels, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        prioritySpinner.setAdapter(adapter);
+
+        prioritySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                selectedPriority = parent.getItemAtPosition(position).toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                selectedPriority = "Media";
+            }
+        });
+    }
+
     private void loadTasks() {
         List<Task> tasks = taskRepository.getAllTasks();
 
-        taskAdapter = new TaskAdapter(tasks, position -> {
+        taskAdapter = new TaskAdapter(tasks, requireContext(), position -> {
             Task taskToDelete = tasks.get(position);
             new AlertDialog.Builder(requireContext())
                     .setTitle("Conferma eliminazione")
                     .setMessage("Sei sicuro di voler eliminare questa task?")
                     .setPositiveButton("Elimina", (dialog, which) -> {
-
                         taskRepository.deleteTask(taskToDelete.getId());
                         tasks.remove(position);
                         taskAdapter.notifyItemRemoved(position);
@@ -86,6 +111,7 @@ public class TaskFragment extends Fragment {
 
         taskRecyclerView.setAdapter(taskAdapter);
     }
+
     private void openDatePicker() {
         final Calendar calendar = Calendar.getInstance();
         int year = calendar.get(Calendar.YEAR);

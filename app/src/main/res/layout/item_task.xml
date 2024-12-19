@@ -5,38 +5,38 @@
     android:layout_height="90dp"
     android:orientation="horizontal"
     android:padding="10dp"
-    android:background="@drawable/rounded_card_background"
     android:layout_marginVertical="4dp"
     android:layout_marginHorizontal="8dp"
-    android:elevation="4dp">
+    android:elevation="4dp"
+    android:background="@drawable/rounded_card_background">
 
-    <TextView
-        android:id="@+id/task_title"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_weight="1"
-        android:text=""
-        android:textSize="16sp"
-        android:textStyle="bold"
+        <TextView
+            android:id="@+id/task_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_gravity="center_vertical"
+            android:text=""
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/blue" />
 
-        android:textColor="@color/blue" />
+        <TextView
+            android:id="@+id/task_deadline"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="@color/blue"
+            android:textSize="14sp" />
 
-    <TextView
-        android:id="@+id/task_deadline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:textAlignment="textStart"
-        android:textColor="@color/blue"
-        android:textSize="14sp" />
-
-    <Button
-        android:id="@+id/delete_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/red_500"
-        android:layout_marginVertical="10dp"
-        android:text="Elimina"
-        android:textColor="@android:color/white" />
+        <Button
+            android:id="@+id/delete_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/red_500"
+            android:layout_gravity="center_vertical"
+            android:layout_marginVertical="10dp"
+            android:text="Elimina"
+            android:textColor="@android:color/white" />
 </LinearLayout>
