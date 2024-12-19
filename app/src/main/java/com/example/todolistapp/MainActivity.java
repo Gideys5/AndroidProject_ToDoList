@@ -3,8 +3,10 @@ package com.example.todolistapp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageButton;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
+
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
@@ -22,11 +24,9 @@ public class MainActivity extends AppCompatActivity {
         tabLayout = findViewById(R.id.tab_layout);
         viewPager = findViewById(R.id.view_pager);
 
-        // Imposta l'adapter per il ViewPager
         adapter = new ViewPagerAdapter(this);
         viewPager.setAdapter(adapter);
 
-        // Associa TabLayout con ViewPager2
         new TabLayoutMediator(tabLayout, viewPager, (tab, position) -> {
             switch (position) {
                 case 0:
@@ -38,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
             }
         }).attach();
 
-        // Imposta l'icona per accedere alle impostazioni
         ImageButton settingsButton = findViewById(R.id.settings_button);
         settingsButton.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, SettingsFragment.class);

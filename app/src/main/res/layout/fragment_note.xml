@@ -2,13 +2,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-        <!-- RecyclerView -->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/note_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
-        <!-- Bottone Aggiungi Nota -->
         <Button
             android:id="@+id/add_note_button"
             android:layout_width="60dp"

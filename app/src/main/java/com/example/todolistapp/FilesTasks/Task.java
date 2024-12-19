@@ -1,13 +1,12 @@
 package com.example.todolistapp.FilesTasks;
 
-import android.renderscript.RenderScript;
 
 public class Task {
     private int id;
     private String title;
     private String deadline;
 
-    private String priority;
+//    private String priority;
 
     public Task(String title, String deadline) {
         this.title = title;
@@ -43,28 +42,11 @@ public class Task {
     public void setDeadline(String deadline) {
         this.deadline = deadline;
     }
-    public String getPriorita() {
-        return priority;
-    }
-
-    public void setPriorita(String priority) {
-        this.priority = priority;
-    }
+//    public String getPriority() {
+//        return priority;
+//    }
+//
+//    public void setPriority(String priority) {
+//        this.priority = priority;
+//    }
 }
-/*
-
-<Spinner
-    android:id="@+id/spinnerPriorita"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:entries="@array/priorita_array" />
-
-
-    <resources>
-    <string-array name="priorita_array">
-        <item>Alta</item>
-        <item>Media</item>
-        <item>Bassa</item>
-    </string-array>
-</resources>
- */

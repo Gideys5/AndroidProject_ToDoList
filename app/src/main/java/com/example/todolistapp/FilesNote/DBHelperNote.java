@@ -12,8 +12,6 @@ import java.util.List;
 public class DBHelperNote extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "note.db";
     private static final int DATABASE_VERSION = 4;
-
-    // Tabella delle note
     private static final String TABLE_NOTES = "notes";
     private static final String COLUMN_NOTE_ID = "id";
     private static final String COLUMN_NOTE_TITLE = "title";
@@ -65,7 +63,7 @@ public class DBHelperNote extends SQLiteOpenHelper {
                 int id = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_NOTE_ID));
                 String title = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_NOTE_TITLE));
                 String content = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_NOTE_CONTENT));
-                notes.add(new Nota(id,title, content)); // Includi l'ID
+                notes.add(new Nota(id,title, content));
             } while (cursor.moveToNext());
             cursor.close();
         }

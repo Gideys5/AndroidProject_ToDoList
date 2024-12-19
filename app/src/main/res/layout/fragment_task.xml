@@ -5,7 +5,6 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-    <!-- Input per Task -->
     <EditText
         android:id="@+id/task_title"
         android:layout_width="match_parent"
@@ -13,7 +12,6 @@
         android:hint="Inserisci una nuova task"
         android:inputType="text" />
 
-    <!-- Scadenza con DatePicker -->
     <EditText
         android:id="@+id/task_deadline"
         android:layout_width="match_parent"
@@ -28,6 +26,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Aggiungi Task"
+        android:textColor="@color/blue"
+        android:backgroundTint="@color/blue_900"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="8dp" />
 

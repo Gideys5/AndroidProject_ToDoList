@@ -12,7 +12,7 @@ import java.util.List;
 public class DBHelperTask extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "tasks.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 4;
 
     public static final String TABLE_TASKS = "tasks";
     public static final String COLUMN_ID = "id";
@@ -62,7 +62,8 @@ public class DBHelperTask extends SQLiteOpenHelper {
                 int id = cursor.getInt(cursor.getColumnIndexOrThrow(DBHelperTask.COLUMN_ID));
                 String title = cursor.getString(cursor.getColumnIndexOrThrow(DBHelperTask.COLUMN_TITLE));
                 String deadline = cursor.getString(cursor.getColumnIndexOrThrow(DBHelperTask.COLUMN_DEADLINE));
-                tasks.add(new Task(id, title, deadline));
+                Task task = new Task(id,title, deadline);
+                tasks.add(task);
             } while (cursor.moveToNext());
             cursor.close();
         }

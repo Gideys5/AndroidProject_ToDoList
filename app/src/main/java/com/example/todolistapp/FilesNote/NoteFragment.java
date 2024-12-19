@@ -38,7 +38,6 @@ public class NoteFragment extends Fragment {
         noteRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         noteRepository = new NoteRepository(requireContext());
 
-        // Carica le note dal database
         loadNotes();
 
         noteAdapter = new NoteAdapter(notaList, new NoteAdapter.OnNoteClickListener() {
@@ -55,24 +54,14 @@ public class NoteFragment extends Fragment {
 
         noteRecyclerView.setAdapter(noteAdapter);
 
-        // Listener per aggiungere una nuova nota
         addNoteButton.setOnClickListener(v -> showNoteDialog(-1));
 
         return view;
     }
-
-    /**
-     * Metodo per caricare le note dal database.
-     */
     private void loadNotes() {
         notaList = new ArrayList<>(noteRepository.getAllNotes());
     }
 
-    /**
-     * Mostra un dialog per confermare l'eliminazione di una nota.
-     *
-     * @param position Indice della nota nella lista.
-     */
     private void deleteNoteDialog(int position) {
         if (position < 0 || position >= notaList.size()) {
             Toast.makeText(getContext(), "Errore: Indice non valido.", Toast.LENGTH_SHORT).show();
@@ -98,11 +87,6 @@ public class NoteFragment extends Fragment {
                 .show();
     }
 
-    /**
-     * Mostra un dialog per aggiungere o modificare una nota.
-     *
-     * @param position Indice della nota da modificare, oppure -1 per aggiungerne una nuova.
-     */
     private void showNoteDialog(int position) {
         View dialogView = LayoutInflater.from(getContext()).inflate(R.layout.dialog_note, null);
         EditText titleInput = dialogView.findViewById(R.id.edit_note_title);
@@ -111,7 +95,6 @@ public class NoteFragment extends Fragment {
         Button cancelButton = dialogView.findViewById(R.id.cancel_button);
 
         if (position >= 0) {
-            // Precompila i campi se si sta modificando una nota esistente
             Nota notaToEdit = notaList.get(position);
             titleInput.setText(notaToEdit.getTitle());
             contentInput.setText(notaToEdit.getContent());
@@ -144,16 +127,8 @@ public class NoteFragment extends Fragment {
         dialog.show();
     }
 
-    /**
-     * Aggiunge una nuova nota o aggiorna una esistente.
-     *
-     * @param title    Titolo della nota.
-     * @param content  Contenuto della nota.
-     * @param position Indice della nota da aggiornare, oppure -1 per aggiungerne una nuova.
-     */
     private void addOrUpdateNote(String title, String content, int position) {
         if (position >= 0) {
-            // Aggiorna una nota esistente
             Nota updatedNote = notaList.get(position);
             updatedNote.setTitle(title);
             updatedNote.setContent(content);

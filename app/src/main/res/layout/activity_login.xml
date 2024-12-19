@@ -5,6 +5,17 @@
     android:background="#03045E"
     android:padding="20dp">
 
+    <TextView
+        android:id="@+id/app_name_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ToDoList-App"
+        android:textSize="15sp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="16dp"
+        android:textStyle="bold"
+        android:textColor="@color/light_blue_100" />
+
 
     <TextView
         android:id="@+id/login_title"
