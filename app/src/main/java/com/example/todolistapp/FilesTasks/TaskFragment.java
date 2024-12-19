@@ -31,7 +31,7 @@ public class TaskFragment extends Fragment {
     private TaskRepository taskRepository;
     private EditText taskInput, deadlineInput;
     private Spinner prioritySpinner;
-    private String selectedPriority = "Media";
+    private String selectedPriority;
 
     @Nullable
     @Override

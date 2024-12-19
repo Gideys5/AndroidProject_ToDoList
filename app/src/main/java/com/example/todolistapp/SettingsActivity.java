@@ -6,7 +6,7 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class SettingsFragment extends AppCompatActivity {
+public class SettingsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,7 +16,7 @@ public class SettingsFragment extends AppCompatActivity {
         Button logoutButton = findViewById(R.id.logout_button);
 
         logoutButton.setOnClickListener(v -> {
-            Intent intent = new Intent(SettingsFragment.this, LoginActivity.class);
+            Intent intent = new Intent(SettingsActivity.this, LoginActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
             finish();

@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
         ImageButton settingsButton = findViewById(R.id.settings_button);
         settingsButton.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, SettingsFragment.class);
+            Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
             startActivity(intent);
         });
     }

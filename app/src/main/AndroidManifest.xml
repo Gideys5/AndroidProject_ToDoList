@@ -15,7 +15,7 @@
 
         <activity android:name=".RegisterActivity"/>
         <activity android:name=".MainActivity"/>
-        <activity android:name=".SettingsFragment" />
+        <activity android:name=".SettingsActivity" />
         <activity android:name=".LoginActivity"
             android:exported="true">
             <!-- Activity di avvio -->
